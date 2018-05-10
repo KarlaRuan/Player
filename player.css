@@ -53,6 +53,22 @@
 	box-shadow: 1px 1px 1px rgba(0,0,0,0,2);
 	cursor: pointer;
 }
+.controls .bottom{
+	position: absolute;
+	bottom: 1em;
+	width: 95%;
+}
+.controls .bottom .progress{
+	height: 5px;
+	border-radius: 8px;
+	background-color: #000;
+} 
+.controls .bottom .progress .bar{
+	height: 100%;
+	width: 0%;
+	border-radius: 8px;
+	background-color: #00e676;	
+}
 .pointer {
 	cursor: pointer;
 }
