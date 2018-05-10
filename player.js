@@ -15,7 +15,8 @@ class Video{
 		this.playPauseBtn.addEventListener('click',()=>this.playPause());
 		this.showVolumeBtn.addEventListener('click',()=>this.toggleVolume()); /*Crea funcion para aparecer y desaparecer icono*/
 		this.volumeRange.addEventListener('input',()=>this.updateVolume());
-		this.videoElement.addEventListener('timeupdate',()=>this.updateProgress())
+		this.videoElement.addEventListener('timeupdate',()=>this.updateProgress());
+		this.videoElement.addEventListener('durationchange',()=>this.setFullDuration());
 	}
 	playPause(){
 		if(this.videoElement.paused){
@@ -40,6 +41,9 @@ class Video{
 		}
 		this.videoElement.volume=this.volumeRange.value;
 	}
+	setFullDuration(){
+		document.querySelector(this.selector + " .full-duration").innerHTML=this.videoElement.duracion;
+	}
 	updateProgress(){
 		let currentTime=this.videoElement.currentTime; //Guardarmos lo que lleva el video
 		let fullTime=this.videoElement.duracion; //Guardarmos la duracion total del video
@@ -47,6 +51,6 @@ class Video{
 		fullTime	 100
 		currentTime  x    */
 		let percentage= Math.floor((currentTime * 100) / fullTime); //Mah.floor es para redondear
-		this.progressBar.style.width=percentage+"%";  //Actualizar el ancho de la barra de progreso
+		this.progressBar.style.width=percentage+"%"; //Actualizar el ancho de la barra de progreso
 	}
 }

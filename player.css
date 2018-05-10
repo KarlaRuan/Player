@@ -69,8 +69,19 @@
 	border-radius: 8px;
 	background-color: #00e676;	
 }
+.controls .bottom .bar-controls{
+	color: rgba(255,255,255,1);
+	margin-bottom: 3px;
+}
+.controls .bottom .bar-controls i{
+	margin-top: -3px;
+	margin-left: .5em;
+}
 .pointer {
 	cursor: pointer;
+}
+.pull-right{
+	float: right;
 }
 .material-icons.md-96 { font-size: 96px; }
 .material-icons.md-24 { font-size: 24px; }
