@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Mi propio reproductor de video</title>
+	<link rel="stylesheet" type="text/css" href="./player.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+	<div class="video-player">
+		<video src="video.mp4" width="800"> </video>
+
+		<div class="controls">
+			<div class="top">
+				<div class="volume ">
+					<i class="material-icons md-light md-24 show-volume pointer"> volume_up</i>
+					<div>
+						<input type="range" id="volume-range" value="1" min="0" max="1" step=".1">
+					</div>
+				</div>
+			</div>
+			<div class="center">
+				<i class="material-icons md-96 md-light pointer play-pause"> play_arrow </i> 
+			</div>
+		</div>
+	</div>
+
+	<script src="./player.js">
+		
+	</script>
+
+	<script>
+		let video = new Video('.video-player');
+	</script>
+
+</body>
+</html>
