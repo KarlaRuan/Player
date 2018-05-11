@@ -42,7 +42,23 @@ class Video{
 		this.videoElement.volume=this.volumeRange.value;
 	}
 	setFullDuration(){
-		document.querySelector(this.selector + " .full-duration").innerHTML=this.videoElement.duracion;
+		this.setTime(this.videoElement.duration,".full-duration");
+	}
+	setTime(seconds,selector){
+		let minutes=parseInt(duration/60,10);
+		let seconds=parseInt(duration%60);   
+
+		minutes=(minutes<10) ? "0"+minutes : minutes;
+		seconds=(seconds<10) ? "0"+seconds : seconds;
+		// if (minutes<10){
+		// 	minutes="0"+minutes;
+		// } 
+		// if (seconds<10){
+		// 	seconds="0"+seconds;
+		// }
+
+		document.querySelector(this.selector + " "+selector)
+			.innerHTML=minutes+":"+seconds;
 	}
 	updateProgress(){
 		let currentTime=this.videoElement.currentTime; //Guardarmos lo que lleva el video
@@ -50,6 +66,8 @@ class Video{
 		/*Regla de 3 para obtener cuanto se irá recorriendo la barra de progreso
 		fullTime	 100
 		currentTime  x    */
+		this.setTime(currentTime,".current-duration");
+
 		let percentage= Math.floor((currentTime * 100) / fullTime); //Mah.floor es para redondear
 		this.progressBar.style.width=percentage+"%"; //Actualizar el ancho de la barra de progreso
 	}
