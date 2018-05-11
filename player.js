@@ -10,13 +10,17 @@ class Video{
 		this.playPauseBtn=document.querySelector(this.selector + " .play-pause");
 		this.showVolumeBtn=document.querySelector(this.selector + " .show-volume");
 		this.volumeRange=document.querySelector(this.selector + " #volume-range");
-		this.progressBar=document.querySelector(this.selector + " .bar")
+		this.progressBar=document.querySelector(this.selector + " .bar");
+		this.fullScreenBtn=document.querySelector(this.selector + ".set-full-screen");
 
 		this.playPauseBtn.addEventListener('click',()=>this.playPause());
 		this.showVolumeBtn.addEventListener('click',()=>this.toggleVolume()); /*Crea funcion para aparecer y desaparecer icono*/
 		this.volumeRange.addEventListener('input',()=>this.updateVolume());
 		this.videoElement.addEventListener('timeupdate',()=>this.updateProgress());
 		this.videoElement.addEventListener('durationchange',()=>this.setFullDuration());
+		this.fullScreenBtn.addEventListener('click',()=>this.setFullScreen());
+		console.log(fullScreenBtn);
+		console.log(setFullScreen);
 	}
 	playPause(){
 		if(this.videoElement.paused){
@@ -27,6 +31,12 @@ class Video{
 				this.playPauseBtn.innerHTML="play_arrow";
 			}
 
+	}
+	setFullScreen(){
+		let fullScreenFunction=this.videoElement.requestFullscreen ||
+						  this.videoElement.webkitRequestFullScreen ||
+						  this.videoElement.mozRequestFullScreen;
+		fullScreenFunction.call(this.videoElement);
 	}
 	toggleVolume(){
 		document.querySelector(this.selector + " .volume").classList.toggle('active');	
